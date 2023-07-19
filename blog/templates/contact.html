@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<body data-spy="scroll" data-target="#navbar-nav-header" class="static-layout">
+<div class="boxed-page">
+
+
+    <div id="side-nav" class="sidenav">
+        <a href="javascript:void(0)" id="side-nav-close">&times;</a>
+
+        <div class="sidenav-content">
+            <p>
+                Kuncen WB1, Wirobrajan 10010, DIY
+            </p>
+            <p>
+                <span class="fs-16 primary-color">(+68) 120034509</span>
+            </p>
+            <p>info@yourdomain.com</p>
+        </div>
+    </div>
+    <div id="side-search" class="sidenav">
+        <a href="javascript:void(0)" id="side-search-close">&times;</a>
+        <div class="sidenav-content">
+            <form action="">
+
+                <div class="input-group md-form form-sm form-2 pl-0">
+                    <input class="form-control my-0 py-1 red-border" type="text" placeholder="Search"
+                           aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="input-group-text red lighten-3" id="basic-text1">
+                            <span class="lnr lnr-magnifier"></span>
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+    <div class="jumbotron jumbotron-single d-flex align-items-center"
+         style="background-image: url({% static 'img/bg.jpg' %})">
+        <!-- остальное содержимое -->
+        <div class="container text-center">
+            <h1 class="display-2 mb-4">Contact Us</h1>
+        </div>
+    </div>        <!-- Contact Form Section -->
+    <section id="reservation" class="bg-white section-content">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 offset-lg-1 mb-5 mb-lg-0" data-aos="fade-right">
+                    <div class="bg-white p-5 shadow">
+                        <div class="heading-section text-center">
+                            <h2 class="mb-4">
+                                Contact Us
+                            </h2>
+                        </div>
+                        <form method="post" name="contact-us" action="">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <div class="col-md-12 text-center">
+                                <button class="btn btn-primary btn-shadow btn-lg" type="submit" name="submit">Send
+                                    Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4 offset-lg-1" data-aos="fade-left">
+                    <h2 class="mb-4">
+                        Best solution to create any website. Pay once.
+                    </h2>
+                    <p class="mb-4">I am text block. Click edit button to change this text. Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus
+                        leo.</p>
+
+                    <ul class="list-inline py-2">
+                        <li class="list-inline-item text-center">
+                            <span class="lnr fs-40 lnr-rocket"></span>
+                            <p>Fast delivery</p>
+                        </li>
+                        <li class="list-inline-item text-center">
+                            <span class="lnr fs-40 lnr-magic-wand"></span>
+                            <p>Awesome design</p>
+                        </li>
+                        <li class="list-inline-item text-center">
+                            <span class="lnr fs-40 lnr-cog"></span>
+                            <p>Easy to customize</p>
+                        </li>
+                    </ul>
+
+                    <a href="#" class="btn btn-link p-0">
+                        <span>PURCHASE NOW</span>
+                        <span class="lnr lnr-arrow-right"></span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- End of Contact Form Section -->        <!-- Features Section-->
+    <section id="cta" class="bg-fixed overlay" style="background-image: url({% static 'img/bg.jpg' %});">
+        <div class="container">
+            <div class="section-content" data-aos="fade-down">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h2 class="mb-2">Make a beautiful website, or million of them</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, veritatis qui eligendi
+                            delectus quia fuga!</p>
+                        <a class="btn btn-outline-primary btn-lg">FEATURES</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End of Features Section-->
+    <footer class="mastfoot my-3">
+        <div class="inner container">
+            <div class="row">
+                <div class="col-lg-4 col-md-12 d-flex align-items-center">
+
+                </div>
+                <div class="col-lg-4 col-md-12 d-flex align-items-center">
+                    <p class="mx-auto text-center mb-0">&copy; 2019 Roxy. Design by <a href="https://gettemplates.co"
+                                                                                       target="_blank">GetTemplates</a>.
+                    </p>
+                </div>
+
+                <div class="col-lg-4 col-md-12">
+                    <nav class="nav nav-mastfoot justify-content-center">
+                        <a class="nav-link" href="#">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a class="nav-link" href="#">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a class="nav-link" href="#">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a class="nav-link" href="#">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a class="nav-link" href="#">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+</div>
+{% endblock %}
+
+<!-- External JS -->
+

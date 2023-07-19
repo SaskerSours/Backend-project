@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<body data-spy="scroll" data-target="#navbar" class="static-layout">
+<div id="side-nav" class="sidenav">
+    <a href="javascript:void(0)" id="side-nav-close">&times;</a>
+
+    <div class="sidenav-content">
+        <p>
+            Kuncen WB1, Wirobrajan 10010, DIY
+        </p>
+        <p>
+            <span class="fs-16 primary-color">(+68) 120034509</span>
+        </p>
+        <p>info@yourdomain.com</p>
+    </div>
+</div>
+<div id="side-search" class="sidenav">
+    <a href="javascript:void(0)" id="side-search-close">&times;</a>
+    <div class="sidenav-content">
+        <form action="">
+
+            <div class="input-group md-form form-sm form-2 pl-0">
+                <input class="form-control my-0 py-1 red-border" type="text" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="input-group-text red lighten-3" id="basic-text1">
+                        <span class="lnr lnr-magnifier"></span>
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+
+<div id="side-nav" class="sidenav">
+    <a href="javascript:void(0)" id="side-nav-close">&times;</a>
+
+    <div class="sidenav-content">
+        <p>
+            Kuncen WB1, Wirobrajan 10010, DIY
+        </p>
+        <p>
+            <span class="fs-16 primary-color">(+68) 120034509</span>
+        </p>
+        <p>info@yourdomain.com</p>
+    </div>
+</div>
+<div id="side-search" class="sidenav">
+    <a href="javascript:void(0)" id="side-search-close">&times;</a>
+    <div class="sidenav-content">
+        <form action="">
+
+            <div class="input-group md-form form-sm form-2 pl-0">
+                <input class="form-control my-0 py-1 red-border" type="text" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="input-group-text red lighten-3" id="basic-text1">
+                        <span class="lnr lnr-magnifier"></span>
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+<div class="jumbotron jumbotron-single d-flex align-items-center"
+     style="background-image: url({{ postik.image.url }})">
+    <div class="container text-center">
+        <h1 class="display-2 mb-4">Staff request</h1>
+    </div>
+</div>    <!-- Contact Form Section -->
+<section id="single-content" class="bg-white">
+    <div class="container">
+        <div class="section-content blog-content">
+            <div class="row">
+                <!-- Single Content Holder -->
+                <div class="col-md-4 col-sm-12 text-center mt-4 mx-auto" data-aos="fade-down">
+                    <div class="shadow rounded feature-item p-4 mb-4">
+                        <div class="my-4">
+                            <i class="lnr lnr-cog fs-40"></i>
+                        </div>
+                        <h4>Number of contacts</h4>
+                        {% if contact_count %}
+                        <p>Contacts available {{ contact_count }}</p>
+                        <form method="post" action="{% url 'staff' %}">
+                            {% csrf_token %}
+                            <button class="btn btn-primary btn-shadow btn-lg" type="submit" name="submit">Send Email
+                                </button>
+                        </form>
+
+                        {% else %}
+                        <p>At the moment here is empty</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- End of Contact Form Section -->    <!-- Features Section-->
+<section id="cta" class="bg-fixed overlay" style="background-image: url({% static 'img/bg.jpg' %})">
+    <div class="container">
+        <div class="section-content" data-aos="fade-down">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2 class="mb-2">Make a beautiful website, or million of them</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, veritatis qui eligendi
+                        delectus quia fuga!</p>
+                    <a class="btn btn-outline-primary btn-lg">FEATURES</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End of Features Section--></div>
+<footer class="mastfoot my-3">
+    <div class="inner container">
+        <div class="row">
+            <div class="col-lg-4 col-md-12 d-flex align-items-center">
+
+            </div>
+            <div class="col-lg-4 col-md-12 d-flex align-items-center">
+                <p class="mx-auto text-center mb-0">&copy; 2019 Roxy. Design by <a href="https://gettemplates.co"
+                                                                                   target="_blank">GetTemplates</a>.</p>
+            </div>
+
+            <div class="col-lg-4 col-md-12">
+                <nav class="nav nav-mastfoot justify-content-center">
+                    <a class="nav-link" href="#">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a class="nav-link" href="#">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a class="nav-link" href="#">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a class="nav-link" href="#">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a class="nav-link" href="#">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+</footer>    <!-- External JS -->
+</body>
+{% endblock %}

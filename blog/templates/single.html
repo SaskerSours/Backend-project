@@ -1,0 +1,220 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+{% load thumbnail %}
+
+
+<body data-spy="scroll" data-target="#navbar" class="static-layout">
+<div id="side-nav" class="sidenav">
+    <a href="javascript:void(0)" id="side-nav-close">&times;</a>
+
+    <div class="sidenav-content">
+        <p>
+            Kuncen WB1, Wirobrajan 10010, DIY
+        </p>
+        <p>
+            <span class="fs-16 primary-color">(+68) 120034509</span>
+        </p>
+        <p>info@yourdomain.com</p>
+    </div>
+</div>
+<div id="side-search" class="sidenav">
+    <a href="javascript:void(0)" id="side-search-close">&times;</a>
+    <div class="sidenav-content">
+        <form action="">
+
+            <div class="input-group md-form form-sm form-2 pl-0">
+                <input class="form-control my-0 py-1 red-border" type="text" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="input-group-text red lighten-3" id="basic-text1">
+                        <span class="lnr lnr-magnifier"></span>
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+
+<div id="side-nav" class="sidenav">
+    <a href="javascript:void(0)" id="side-nav-close">&times;</a>
+
+    <div class="sidenav-content">
+        <p>
+            Kuncen WB1, Wirobrajan 10010, DIY
+        </p>
+        <p>
+            <span class="fs-16 primary-color">(+68) 120034509</span>
+        </p>
+        <p>info@yourdomain.com</p>
+    </div>
+</div>
+<div id="side-search" class="sidenav">
+    <a href="javascript:void(0)" id="side-search-close">&times;</a>
+    <div class="sidenav-content">
+        <form action="">
+
+            <div class="input-group md-form form-sm form-2 pl-0">
+                <input class="form-control my-0 py-1 red-border" type="text" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="input-group-text red lighten-3" id="basic-text1">
+                        <span class="lnr lnr-magnifier"></span>
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+<div class="jumbotron jumbotron-single d-flex align-items-center"
+     style="background-image: url({{ postik.image.url }})">
+    <div class="container text-center">
+        <h1 class="display-2 mb-4">Single Blog</h1>
+    </div>
+</div>    <!-- Contact Form Section -->
+<section id="single-content" class="bg-white">
+    <div class="container">
+        <div class="section-content blog-content">
+
+            <div class="row">
+                <!-- Single Content Holder -->
+                <div class="col-md-8 offset-md-2 mt-4" data-aos="fade-down">
+                    <h4>{{post.title}}</h4>
+                    {% thumbnail post.image "800x550" crop="center" upscale=True as im %}
+                    <div class="card" data-aos="fade-down">
+                        <img class="card-img" src="{{ im.url }}" alt="">
+                    </div>
+                    {% endthumbnail %}
+                    <p></p>
+                    <p>{{post.text}}</p>
+
+                </div>
+                <!-- End of Contact Form Holder -->
+            </div>
+            <div data-aos="fade-down" style="text-align: center;">
+                <button id="toggle-comment-form" class="btn btn-primary" style="margin: 0 auto;">Toggle Comment Form
+                </button>
+
+                <form id="comment-form" method="POST" action="{% url 'add_comment' pk=post.id %}"
+                      style="display: none;">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Add comment</button>
+                </form>
+
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script>
+        $(document).ready(function() {
+            $('#toggle-comment-form').click(function() {
+                $('#comment-form').toggle();
+            });
+        });
+
+
+
+
+                </script>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<!-- End of Contact Form Section -->    <!-- Features Section-->
+<section id="cta" class="bg-fixed overlay" style="background-image: url({% static 'img/bg.jpg' %})">
+    <div class="container">
+        <div class="section-content" data-aos="fade-down">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div id="comment-container">
+                        {% if comments %}
+                        <p id="comment-text" style="font-size: 24px;">anonymous: {{ comments.0.text }}</p>
+                        {% else %}
+                        <p> None </p>
+                        {% endif %}
+                    </div>
+                    <div class="comment-buttons">
+                        <button id="prev-comment" class="btn btn-outline-primary">Previous</button>
+                        <button id="next-comment" class="btn btn-outline-primary">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var comments = [
+            {% for comment in comments %}
+                {
+                    "text": "{{ comment.text }}"
+                },
+            {% endfor %}
+        ];
+        var currentIndex = 0;
+
+        function displayComment(index) {
+            $('#comment-text').text('anonymous: ' + comments[index].text);
+        }
+
+        displayComment(currentIndex);
+
+        $('#prev-comment').click(function() {
+            currentIndex = (currentIndex - 1 + comments.length) % comments.length;
+            displayComment(currentIndex);
+        });
+
+        $('#next-comment').click(function() {
+            currentIndex = (currentIndex + 1) % comments.length;
+            displayComment(currentIndex);
+        });
+    });
+
+
+</script>
+
+
+<!-- End of Features Section-->
+<footer class="mastfoot my-3">
+    <div class="inner container">
+        <div class="row">
+            <div class="col-lg-4 col-md-12 d-flex align-items-center">
+
+            </div>
+            <div class="col-lg-4 col-md-12 d-flex align-items-center">
+                <p class="mx-auto text-center mb-0">&copy; 2019 Roxy. Design by <a href="https://gettemplates.co"
+                                                                                   target="_blank">GetTemplates</a>.</p>
+            </div>
+
+            <div class="col-lg-4 col-md-12">
+                <nav class="nav nav-mastfoot justify-content-center">
+                    <a class="nav-link" href="#">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a class="nav-link" href="#">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a class="nav-link" href="#">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a class="nav-link" href="#">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a class="nav-link" href="#">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+</footer>    <!-- External JS -->
+</body>
+{% endblock %}

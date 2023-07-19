@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="post-search-form">
+    <input type="text" id="search-input" placeholder="Search...">
+    <button type="submit">Search</button>
+</form>
+
+<div id="search-results">
+    {% for post in posts %}
+    <h4>{{ post.title }}</h4>
+    <p>{{ post.text }}</p>
+    <!-- інші поля посту -->
+{% empty %}
+    <p>No results found.</p>
+{% endfor %}
+</div>
+
+
+<!-- search.html -->
+
+</body>
+</html>
